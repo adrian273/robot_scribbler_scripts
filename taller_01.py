@@ -6,6 +6,7 @@
     @name_robot => TUX
 '''
 import os
+from Myro import *
 
 MSG_ERROR = 'Opcion no valida'
 
@@ -17,19 +18,19 @@ class Move(object):
         self.second = second
 
     def move_left(self):
-        #turnLeft(self.speed, self.second)
+        turnLeft(self.speed, self.second)
         print('Moviendo a la izquierda a la velocidad ' + str(self.speed) + ' con ' + str(self.second) + 's')
 
     def move_right(self):
-        #turnRight(self.speed, self.second)
+        turnRight(self.speed, self.second)
         print('Moviendo a la derecha a la velocidad ' + str(self.speed) + ' con ' + str(self.second) + 's')
 
     def move_backward(self):
-        #backward(self.speed, self.second)
+        backward(self.speed, self.second)
         print('Moviendo hacia atras a la velocidad ' + str(self.speed) + ' con ' + str(self.second) + 's')
 
     def move_forward(self):
-        #forward(self.speed, self.second)
+        forward(self.speed, self.second)
         print('Moviendo hacia adelante a la velocidad ' + str(self.speed) + ' con ' + str(self.second) + 's')
 
 class Calculation(object):
@@ -39,19 +40,23 @@ class Calculation(object):
         self.n2 = n2
 
     def suma(self):
-        suma = self.n1 + self. n2
+        suma = self.n1 + self.n2
+        speak('El resultado es ' + str(suma))
         print('la suma es ' + str(suma))
 
     def resta(self):
-        resta = self.n1 - self. n2
+        resta = self.n1 - self.n2
+        speak('El resultado es ' + str(resta))
         print('la resta es ' + str(resta))
 
     def multi(self):
-        multiplicacion = self.n1 * self. n2
+        multiplicacion = self.n1 * self.n2
+        speak('El resultado es ' + str(multiplicacion))
         print('la multiplicacion es ' + str(multiplicacion))
 
     def dividir(self):
-        division = self.n1 / self. n2
+        division = self.n1 / self.n2
+        speak('El resultado es ' + str(division))
         print('la division es ' + str(division))
 
 def photo():
@@ -59,8 +64,11 @@ def photo():
     print(title.center(120, '_'))
     count_photo = int(input('Ingrese cantidad de fotos: '))
     for i in range(count_photo):
-        #wait(1)
-        #speak('Sacando foto')
+        wait(1)
+        speak('Sacando foto')
+        setPictureSize("small")
+        img = takePicture("jpeg")
+        show(img)
         print(i)
     print('esta es la cantidad de fotos ' + str(count_photo))
 
@@ -91,6 +99,7 @@ def main_cals():
     print('5. Salir')
 
 if __name__ == '__main__':
+    init('COM3')
     while True:
         main()
         op = int(input('Ingresa tu opcion: '))
