@@ -1,3 +1,5 @@
 *.nja
 /*.nja
 .directory
+/*.pyc
+*.pyc
